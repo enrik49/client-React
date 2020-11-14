@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 
 import Machines from './components/machines';
-import AddMachine from './components/addMachine';
+import AddMachine from './components/buttons/addMachine';
 
 class App extends Component {
   state = {

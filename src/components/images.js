@@ -1,4 +1,5 @@
-import AddImage from './addImage';
+import AddImage from './buttons/addImage';
+import DeleteImage from './buttons/deleteImage';
 
 const Images = ({ images }) => {
     const style_div = {
@@ -7,7 +8,6 @@ const Images = ({ images }) => {
         width:"25%",
         display:"inline-block"
     }
-    let addButton;
 
     return (
         <div>
@@ -15,6 +15,7 @@ const Images = ({ images }) => {
                 <div key={image.id} style={style_div}>
                     <p>Type: {image.type}</p>
                     <p>Url: {image.url}</p>
+                    <DeleteImage image={image}/>
                 </div>
             ))}
             <AddImage />
