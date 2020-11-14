@@ -1,7 +1,8 @@
 import Images from './images';
 
-import UpdateMachine from './buttons/updateMachine';
+
 import DeleteMachine from './buttons/deleteMachine';
+import ModalMachine from './modals/modalMachine';
 
 const Machines = ({ machines }) => {
   const style_div = {
@@ -17,7 +18,7 @@ const Machines = ({ machines }) => {
     width:"30%"
   }
 
-    return (
+  return (
       <div>
         {machines.map((machine) => (
           <div key={machine.id} style={style_div}>
@@ -30,7 +31,7 @@ const Machines = ({ machines }) => {
               <Images images={machine.images}/>
             </div>
             <div style={rightSide}>
-              <UpdateMachine/>
+              <ModalMachine machine={machine}/>
               <DeleteMachine machine={machine}/>
             </div>
           </div>

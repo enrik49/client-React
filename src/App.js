@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 
 import Machines from './components/machines';
-import AddMachine from './components/buttons/addMachine';
+import ModalMachine from './components/modals/modalMachine';
 
 class App extends Component {
   state = {
@@ -25,7 +25,7 @@ class App extends Component {
   render() {
     return (
         <div><center><h1>Machine List</h1></center>
-          <AddMachine/>
+          <ModalMachine/>
           <Machines machines={this.state.machines}/>
         </div>
     );

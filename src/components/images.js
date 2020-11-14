@@ -1,5 +1,5 @@
-import AddImage from './buttons/addImage';
 import DeleteImage from './buttons/deleteImage';
+import ModalImage from './modals/modalImage';
 
 const Images = ({ images }) => {
     const style_div = {
@@ -18,7 +18,7 @@ const Images = ({ images }) => {
                     <DeleteImage image={image}/>
                 </div>
             ))}
-            <AddImage />
+            <ModalImage />
         </div>
     )
   };
