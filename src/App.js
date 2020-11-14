@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{Component} from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Machines from './components/machines';
+import AddMachine from './components/addMachine';
+
+class App extends Component {
+  state = {
+    machines:[]
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:8000/api/machine',{
+      method: 'GET',
+      headers: {'Content-Type':'application/json'},
+    })
+    .then(response => response.json())
+    .then((jsonData) => {
+      this.setState({ machines: jsonData })
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+  }
+
+
+  render() {
+    return (
+        <div><center><h1>Machine List</h1></center>
+          <AddMachine/>
+          <Machines machines={this.state.machines}/>
+        </div>
+    );
+  }
 }
 
 export default App;
+
