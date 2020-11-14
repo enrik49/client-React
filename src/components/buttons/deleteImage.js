@@ -5,7 +5,7 @@ const DeleteImage = ({image}) => {
           headers: {'Content-Type':'application/json'},
         })
         .then(()=> {
-          
+          window.location.reload();
         })
         .catch((error) => {
           console.error(error)

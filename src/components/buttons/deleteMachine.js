@@ -1,16 +1,15 @@
 const DeleteMachine = ({machine}) => {  
   let deleteMachine = () => {
-    /*fetch('http://localhost:8000/api/machine/'+machine.id,{
+    fetch('http://localhost:8000/api/machine/'+machine.id,{
       method: 'DELETE',
       headers: {'Content-Type':'application/json'},
     })
     .then(()=> {
-      
+      window.location.reload();
     })
     .catch((error) => {
       console.error(error)
-    })*/
-    this.state.machines.splice(,1);
+    })
   }
     return (
       <div>
