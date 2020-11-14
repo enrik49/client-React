@@ -28,7 +28,7 @@ const Machines = ({ machines }) => {
               <p>Manufacturer: {machine.manufacturer}</p>
               <p>Price: {machine.manufacturer}</p>
               <p>Images:</p>
-              <Images images={machine.images}/>
+              <Images images={machine.images}  machine_id={machine.id}/>
             </div>
             <div style={rightSide}>
               <ModalMachine machine={machine}/>

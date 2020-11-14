@@ -1,7 +1,7 @@
 import DeleteImage from './buttons/deleteImage';
 import ModalImage from './modals/modalImage';
 
-const Images = ({ images }) => {
+const Images = ({ images, machine_id }) => {
     const style_div = {
         border:"1px solid black",
         margin:"2%",
@@ -18,7 +18,7 @@ const Images = ({ images }) => {
                     <DeleteImage image={image}/>
                 </div>
             ))}
-            <ModalImage />
+            <ModalImage machine_id={machine_id} />
         </div>
     )
   };

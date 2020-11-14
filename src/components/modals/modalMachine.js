@@ -16,7 +16,7 @@ const ModalMachine = ({machine}) => {
       };
 
 
-    const [modalIsOpen,setIsOpen] = useState(false);
+  const [modalIsOpen,setIsOpen] = useState(false);
     function openModal() {
         setIsOpen(true);
     }
@@ -69,10 +69,6 @@ const ModalMachine = ({machine}) => {
       manufacturer:"",
       price:""
     }
-    //setBrand(brand => );
-    /*setModel(model => machine.model);
-    setManufacturer(manufacturer => machine.manufacturer);
-    setPrice(price => machine.price);*/
   }
 
   const [brand, setBrand] = useState(machine.brand);
@@ -120,7 +116,7 @@ const ModalMachine = ({machine}) => {
               <td>Manufacturer: <input name="manufacturer" value={manufacturer} onChange={handleManufacturer}/></td>
               </tr>
               <tr>
-              <td>Price: <input name="price" value={price} onChange={handlePrice}/></td>
+              <td>Price: <input type="number" name="price" value={price} onChange={handlePrice}/></td>
               </tr>
               </tbody>
             </table>

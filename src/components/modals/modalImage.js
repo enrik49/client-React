@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
 
-const ModalMachine = ({}) => {
+const ModalMachine = ({machine_id}) => {
     var subtitle;
     const customStyles = {
         content : {
@@ -13,7 +13,6 @@ const ModalMachine = ({}) => {
           transform             : 'translate(-50%, -50%)'
         }
       };
-
 
     const [modalIsOpen,setIsOpen] = React.useState(false);
     function openModal() {
@@ -28,9 +27,41 @@ const ModalMachine = ({}) => {
     setIsOpen(false);
   }
 
+  function sendRequest(){
+    let jsonImage = JSON.stringify({ 
+      'type': type,
+      'url': url,
+      'id_machine': id
+    });
+    console.log(jsonImage);
+    fetch('http://localhost:8000/api/image',{
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: jsonImage
+    })
+    .then(()=> {
+      window.location.reload();
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+  }
+
+  
+  const [type, setType] = useState();
+  const [url, setUrl] = useState();
+  const [id, setMachine_ID] = useState(machine_id);
+
+  function handleUrl(e){
+    setUrl(url => e.target.value);
+  }
+
+  function handleType(e){
+    setType(type => e.target.value);
+  }
     return (
         <div>
-        <button onClick={openModal}>Open Modal</button>
+        <button onClick={openModal}>Create Image</button>
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
@@ -38,17 +69,22 @@ const ModalMachine = ({}) => {
           style={customStyles}
           contentLabel="Example Modal"
         >
- 
-          <h2 ref={_subtitle => (subtitle = _subtitle)}>Hello</h2>
-          <button onClick={closeModal}>close</button>
-          <div>I am a modal</div>
-          <form>
-            td<input />
-            <button>tab navigation</button>
-            <button>stays</button>
-            <button>inside</button>
-            <button>the modal</button>
-          </form>
+ <h2 ref={_subtitle => (subtitle = _subtitle)}>Create Image</h2>
+            <table>
+              <tbody>
+              <tr>
+                <td>Url: <input name="url" onChange={handleUrl}/></td>
+              </tr>
+              </tbody>
+            </table>
+            Type: 
+            <select onChange={handleType}>
+                    <option value="">Select Type</option>
+                    <option value="thumbnail">Thumbnail</option>
+                    <option value="front_view">Front view</option>
+                    <option value="lateral_view">Lateal view</option>
+              </select><br/>
+            <button onClick={sendRequest}>Create Image</button>
         </Modal>
       </div>
     )
